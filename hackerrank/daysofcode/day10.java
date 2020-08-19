@@ -38,34 +38,25 @@ public class day10 {
     //maximum number of consecutive 1s
     public static int maxConsOnes(String base2){
         int maxcount =1;
+        int count = 0;
         int position = 0;
-        char[] base22 = base2.toCharArray();
-        HashMap<Character, Integer> counting = new HashMap<>();
+        char[] arr = base2.toCharArray();
 
-        char current = base22[position];
-        while(position < base22.length -1){
+        //For every 1 in the array, count 1
+        //for every 0, test for max of consecutive 1s
+        while(position <arr.length){
+            if(arr[position]=='1')
+                count++;
+            else if(arr[position]=='0'){
+                maxcount = (maxcount > count) ? maxcount : count;
+                count = 0;
+            }
+
             position++;
+        }
 
-            if(base22[position] == current){
-                maxcount++;
-            }
-            else{
-                counting.put(current, maxcount);
-                maxcount = 1;
-                current = base22[position];
-            }
-        }
-        counting.put(current, maxcount);
-        /*for(int i=0; i<base22.length-1; i++){
-            if(base22[i] == '1' && base22[i] == base22[i+1]){
-                maxcount++;
-            }
-        }*/
-        System.out.println("collisions?");
-        for(char key : counting.keySet()){
-            System.out.println("here is: "+key+"-"+counting.get(key));
-        }
-        //System.out.println(counting.keySet());
+        //when your next array is not 0 make sure that max count is max count
+        maxcount = (maxcount > count) ? maxcount : count;
 
         return maxcount;
     }
@@ -74,11 +65,11 @@ public class day10 {
 
         System.out.println("reverse is:  ");
 
-        System.out.println(reverseAstring(baseTenToTwo(7411, "")));
+        System.out.println(reverseAstring(baseTenToTwo(192381, "")));
 
         System.out.println("max count");
 
-        System.out.println(maxConsOnes(reverseAstring(baseTenToTwo(23, ""))));
+        System.out.println(maxConsOnes(reverseAstring(baseTenToTwo(192381, ""))));
 
         
     }
