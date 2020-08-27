@@ -65,11 +65,11 @@ public class day10 {
 
         System.out.println("reverse is:  ");
 
-        System.out.println(reverseAstring(baseTenToTwo(192381, "")));
+        System.out.println(reverseAstring(baseTenToTwo(13, "")));
 
         System.out.println("max count");
 
-        System.out.println(maxConsOnes(reverseAstring(baseTenToTwo(192381, ""))));
+        System.out.println(maxConsOnes(reverseAstring(baseTenToTwo(13, ""))));
 
         
     }
