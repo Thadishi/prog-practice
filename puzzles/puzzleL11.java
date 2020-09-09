@@ -168,12 +168,14 @@ public class puzzleL11 {
     public static void treeTriangle(){
         int row, col, jane;
         for(row=0; row<=15; row++){
-            for(col=15; col>row; col--)
+            for(col=15; col>=row; col--)
                 System.out.printf(".");
             for(; col>=0; col--)
                 System.out.printf("*");
-            for(col=0; col<=15; col++)
+            for(col=0; col<=row; col++)
                 System.out.print("+");
+            for(; col<=15; col++)
+                System.out.print(",");
             System.out.println();
         }
     }
@@ -185,9 +187,9 @@ public class puzzleL11 {
 
         //System.out.println(excludeThreeandFive());
 
-        //System.out.println(stars());
+        System.out.println(stars());
 
-        starRight();
+        //starRight();
 
         //starRightFlipped();
 
@@ -195,7 +197,7 @@ public class puzzleL11 {
 
         //alternative();
 
-        triangleTree();
+        //triangleTree();
 
         treeTriangle();
 
