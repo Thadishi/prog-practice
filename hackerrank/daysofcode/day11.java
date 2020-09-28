@@ -22,22 +22,20 @@ public class day11 {
     int rowstart, rowend=3, colstart, colend=3;
 
     while(colend < 6 && rowend <6){
-
-        System.out.println(rowend+" shit");
         for(rowstart=k; rowstart<rowend; rowstart++){
-            System.out.println(rowend+" shit and giggles");
+            System.out.println(rowend);
+            m=0;
             for(colstart=m; colstart<colend; colstart++){
                 System.out.println(hour[rowstart][colstart] + " ["+rowstart+","+colstart+"]");
             }
             m++;
         }
-
+        System.out.println("difference="+(colend-k));
         k++;
         rowend++;
         colend++;
         
     }
-
     return 0;
     
     }
