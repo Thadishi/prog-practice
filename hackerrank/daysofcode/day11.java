@@ -4,7 +4,7 @@ public class day11 {
 
     public static int hourglass(){
         int[][] hour = {{1,1,1,0,0,0}, {0,1,0,0,0,0}, {1,1,1,0,0,0},
-    {0,0,0,0,0,0},{0,0,0,0,0,0}, {0,0,0,0,0,0}};
+    {0,0,2,4,4,0},{0,0,0,2,0,0}, {0,0,1,2,4,0}};
 
     /*int j=0, i=0;
     int count =0;
@@ -17,26 +17,38 @@ public class day11 {
             count++;
         }
     }*/
+    /*int count =0;
+    for(int i=0; i<hour.length; i++){
+        for(int j=0; j<hour[i].length; j++){
+            System.out.printf( "%2d", hour[i][j]);
+            count++;
+            if(count%6==0) System.out.println();
+        }
+
+    }*/
     int k=0;
     int m=0;
-    int rowstart, rowend=3, colstart, colend=3;
+    int rowend=3, colend=3;
+    int sum =0;
 
+    int jude =0;
     while(colend < 6 && rowend <6){
-        for(rowstart=k; rowstart<rowend; rowstart++){
-            System.out.println(rowend);
-            m=0;
-            for(colstart=m; colstart<colend; colstart++){
-                System.out.println(hour[rowstart][colstart] + " ["+rowstart+","+colstart+"]");
+        for(int i=k; i<=colend; i++){
+            for(int j=m; j<rowend; j++){
+                System.out.printf("%2d ", hour[i][j]);
+                /*jude++;
+                if (jude%3==0) System.out.println();*/
+                sum += (hour[i][j]+hour[i][j+1]+hour[i][j+2]+hour[i+1][j+1]+hour[i+2][j]+hour[i+2][j+1]+hour[i+2][j+2]);
+
             }
-            m++;
+            
         }
-        System.out.println("difference="+(colend-k));
-        k++;
-        rowend++;
+
         colend++;
-        
+        rowend++;
+
     }
-    return 0;
+    return sum;
     
     }
 

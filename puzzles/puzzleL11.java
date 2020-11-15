@@ -9,6 +9,7 @@ public class puzzleL11 {
      * @return
      */
     public static int oddfive(int number){
+        int count =0;
         
         for(int i=1; i<number; i+=2){
             System.out.printf("%3d",i);
