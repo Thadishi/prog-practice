@@ -30,17 +30,22 @@ public class day11 {
     int m=0;
     int rowend=3, colend=3;
     int sum =0;
+    int maxSum=0;
 
     int jude =0;
-    while(colend < 6 && rowend <6){
+    while(colend <=6 && rowend <=6){
         for(int i=k; i<=colend; i++){
             for(int j=m; j<rowend; j++){
-                System.out.printf("%2d ", hour[i][j]);
                 /*jude++;
                 if (jude%3==0) System.out.println();*/
                 sum += (hour[i][j]+hour[i][j+1]+hour[i][j+2]+hour[i+1][j+1]+hour[i+2][j]+hour[i+2][j+1]+hour[i+2][j+2]);
+                
 
             }
+            maxSum = (maxSum > sum) ? maxSum : sum;
+            sum=0;
+            System.out.println("this is the sum = "+maxSum);
+            
             
         }
 
@@ -48,7 +53,7 @@ public class day11 {
         rowend++;
 
     }
-    return sum;
+    return maxSum;
     
     }
 
