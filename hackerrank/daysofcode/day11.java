@@ -1,64 +1,74 @@
 package hackerrank.daysofcode;
-
+import java.util.Arrays;
+import java.util.ArrayList;;
+import java.util.List;
 public class day11 {
 
-    public static int hourglass(){
-        int[][] hour = {{1,1,1,0,0,0}, {0,1,0,0,0,0}, {1,1,1,0,0,0},
-    {0,0,2,4,4,0},{0,0,0,2,0,0}, {0,0,1,2,4,0}};
+    /**
+     * This fucking thing
+     * took me longer than it should have honestly
+     * like months my g
+     * fucking months
+     * @param hour
+     * @return
+     */
 
-    /*int j=0, i=0;
-    int count =0;
+    public static int hourglass(int[][] hour){
 
-    for(i=0; i<hour.length; i++){
-        for(j=0; j<hour[i].length; j++){
-            if(count%6==0)
-                System.out.println();
-            System.out.printf("%d", hour[i][j]);
-            count++;
-        }
-    }*/
-    /*int count =0;
-    for(int i=0; i<hour.length; i++){
-        for(int j=0; j<hour[i].length; j++){
-            System.out.printf( "%2d", hour[i][j]);
-            count++;
-            if(count%6==0) System.out.println();
-        }
+        //CONVERT ArrayList TO array
 
-    }*/
-    int k=0;
-    int m=0;
-    int rowend=3, colend=3;
-    int sum =0;
-    int maxSum=0;
+        /*int[][] hour = hourg.stream().map(l -> l.stream()
+                                                .mapToInt(Integer::intValue)
+                                                .toArray()).toArray(int[][]::new);*/
 
-    int jude =0;
-    while(colend <=6 && rowend <=6){
-        for(int i=k; i<=colend; i++){
-            for(int j=m; j<rowend; j++){
-                /*jude++;
-                if (jude%3==0) System.out.println();*/
-                sum += (hour[i][j]+hour[i][j+1]+hour[i][j+2]+hour[i+1][j+1]+hour[i+2][j]+hour[i+2][j+1]+hour[i+2][j+2]);
-                
+        int sum = 0;
+        int max = -1000;
 
+
+        for(int i=0; i<hour.length-2; i++){
+            for(int j=0; j<hour[i].length-2; j++){
+
+                sum+= (hour[i][j]+hour[i][j+1]+hour[i][j+2]+
+                hour[i+1][j+1]+
+                hour[i+2][j]+hour[i+2][j+1]+hour[i+2][j+2]);
+
+                System.out.println("sum= "+sum);
+
+                max = sum > max ? sum : max;
+
+                sum=0;
+
+                /*System.out.println(hour[i][j]+" "+hour[i][j+1]+" "+hour[i][j+2]+" "+
+                hour[i+1][j+1]+" "+
+                hour[i+2][j]+" "+hour[i+2][j+1]+" "+hour[i+2][j+2]+"\n");*/
             }
-            maxSum = (maxSum > sum) ? maxSum : sum;
-            sum=0;
-            System.out.println("this is the sum = "+maxSum);
-            
-            
         }
+        
 
-        colend++;
-        rowend++;
-
-    }
-    return maxSum;
+        return max;
     
     }
 
     public static void main(String[] args){
-        hourglass();
+        int[][] hours = {{1,1,1,0,0,0}, {0,1,0,0,0,0}, {1,1,1,0,0,0},
+    {0,0,2,4,4,0},{0,0,0,2,0,0}, {0,0,1,2,4,0}};
+
+    int[][] minushours = {{-1,-1,0,-9,-2,-2}, {-2,-1,-6,-8,-2,-5}, {-1,-1,-1,-2,-3,-4},
+{-1,-9,-2,-4,-4,-5}, {-7,-3,-3,-2,-9,-9}, {-1,-3,-1,-2,-4,-5}};
+
+    /*int count =0;
+    for(int col=0; col<hours.length; col++){
+        for(int row=0; row<hours[col].length; row++){
+            System.out.printf("%3d", hours[col][row]);
+            count++;
+        }
+        if (count%6==0) System.out.println();
+    }
+    if (count%6 !=0) System.out.println();*/
+
+    //System.out.println(Arrays.toString(hour));
+
+        System.out.println(hourglass(hours));
     }
     
 }
